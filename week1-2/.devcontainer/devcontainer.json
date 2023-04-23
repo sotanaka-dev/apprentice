@@ -1,0 +1,19 @@
+{
+  "name": "app-container",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "extensions": [
+    "mhutchie.git-graph",
+    "oderwat.indent-rainbow",
+    "streetsidesoftware.code-spell-checker",
+    "mosapride.zenkaku",
+    "kaiwood.endwise",
+
+    "esbenp.prettier-vscode",
+    "KoichiSasada.vscode-rdbg",
+    "rebornix.Ruby",
+    "wingrunr21.vscode-ruby",
+    "castwide.solargraph"
+  ]
+}
