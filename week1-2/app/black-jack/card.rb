@@ -13,7 +13,7 @@ class Card
 
   def initialize(suit, rank, score)
     @suit = suit
-    @rank = rankx
+    @rank = rank
     @score = score
   end
 
