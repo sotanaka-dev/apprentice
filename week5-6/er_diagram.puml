@@ -1,0 +1,75 @@
+@startuml
+
+entity channels {
+    id : BIGINT <<PK>>
+    --
+    name : VARCHAR(255) <<U>>
+}
+
+entity channel_programs {
+    channel_id : BIGINT <<PK>> <<FK>>
+    program_id : BIGINT <<PK>> <<FK>>
+}
+
+entity programs {
+    id : BIGINT <<PK>>
+    --
+    title : VARCHAR(255)
+    description : TEXT
+}
+
+entity program_genres {
+    genre_id : BIGINT <<PK>> <<FK>>
+    program_id : BIGINT <<PK>> <<FK>>
+}
+
+entity genres {
+    id : BIGINT <<PK>>
+    --
+    name : VARCHAR(255) <<U>>
+}
+
+entity seasons {
+    id : BIGINT <<PK>>
+    --
+    season_num : INT
+    is_single_episode : BOOLEAN
+    program_id : BIGINT <<FK>>
+}
+
+entity episodes {
+    id : BIGINT <<PK>>
+    --
+    episode_num : INT
+    title : VARCHAR(255)
+    description : TEXT
+    duration : TIME
+    release_date : DATE
+    season_id : BIGINT <<FK>>
+}
+
+entity program_slots {
+    id : BIGINT <<PK>>
+    --
+    start_time : DATETIME
+    end_time : DATETIME
+    channel_id : BIGINT <<FK>>
+}
+
+entity broadcast_episodes {
+    program_slot_id : BIGINT <<PK>> <<FK>>
+    episode_id : BIGINT <<PK>> <<FK>>
+    view_count : BIGINT
+}
+
+channels ||..o{ channel_programs
+programs ||..|{ channel_programs
+programs ||..|{ seasons
+seasons ||..|{ episodes
+programs ||..|{ program_genres
+genres ||..o{ program_genres
+channels ||..o{ program_slots
+program_slots ||..o{ broadcast_episodes
+episodes ||..|{ broadcast_episodes
+
+@enduml
