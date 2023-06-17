@@ -1,0 +1,39 @@
+{
+  "name": "api-container",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "api",
+  "workspaceFolder": "/real-world",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "EditorConfig.EditorConfig",
+        "oderwat.indent-rainbow",
+        "esbenp.prettier-vscode",
+
+        "misogi.ruby-rubocop",
+        "aliariff.vscode-erb-beautify",
+        "kaiwood.endwise",
+        "KoichiSasada.vscode-rdbg",
+        "rebornix.Ruby",
+        "wingrunr21.vscode-ruby",
+        "castwide.solargraph"
+      ],
+
+      "settings": {
+        "[ruby]": {
+          "editor.defaultFormatter": "misogi.ruby-rubocop"
+        },
+        "emmet.includeLanguages": {
+          "erb": "html"
+        },
+        "[erb]": {
+          "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+        },
+        "files.associations": {
+          "*.html.erb": "erb"
+        }
+      }
+    }
+  }
+}
