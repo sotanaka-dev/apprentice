@@ -1,0 +1,15 @@
+FROM ruby:3.2.2
+
+WORKDIR /real-world
+
+COPY real-world/Gemfile* ./
+
+RUN bundle install
+
+COPY real-world .
+
+COPY docker/api/entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
+CMD ["rails", "server", "-b", "0.0.0.0"]

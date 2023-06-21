@@ -4,9 +4,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./docker/api/Dockerfile
-    ports:
-      - "3000:3000"
+      dockerfile: ./docker/api/Dockerfile.dev
     depends_on:
       - db
     stdin_open: true
@@ -14,11 +12,18 @@ services:
     volumes:
       - ./real-world:/real-world
 
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/web/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - api
+
   db:
     image: mysql
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: password
-    # volumes:
-    #   - ./docker/db/data:/var/lib/mysql
