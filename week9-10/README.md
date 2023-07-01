@@ -10,3 +10,6 @@ https://sotanaka.dev/
 - [Get Article](https://realworld-docs.netlify.app/docs/specs/backend-specs/endpoints#get-article)
 - [Update Article](https://realworld-docs.netlify.app/docs/specs/backend-specs/endpoints#update-article)
 - [Delete Article](https://realworld-docs.netlify.app/docs/specs/backend-specs/endpoints#delete-article)
+
+## インフラ構成図
+![業務フロー図](infrastructure.drawio.png)
