@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  root to: 'rails/welcome#index'
+
   scope :api do
     post '/users', to: 'users#create'
     post '/users/login', to: 'authentication#login'
