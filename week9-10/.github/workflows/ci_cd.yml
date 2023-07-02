@@ -1,0 +1,29 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [week9-10]
+  pull_request:
+    branches: [week9-10]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: week9-10
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build and start Docker containers
+        run: docker compose -f docker-compose-dev.yml up -d --build
+
+      - name: Create database
+        run: docker compose -f docker-compose-dev.yml run --rm -e RAILS_ENV=test api rails db:create
+
+      - name: Run database migrations
+        run: docker compose -f docker-compose-dev.yml run --rm -e RAILS_ENV=test api rails db:migrate
+
+      - name: Run tests
+        run: docker compose -f docker-compose-dev.yml exec api rails test
